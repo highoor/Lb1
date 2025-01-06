@@ -7,12 +7,7 @@ BASE_URL = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange"
 
 # Функция для получения курсов валют за конкретную дату
 def get_exchange_rate(date):
-    """
-    Получить курсы валют за указанную дату.
-
-    :param date: объект datetime, представляющий дату
-    :return: JSON-ответ с курсами валют за указанную дату
-    """
+   
     formatted_date = date.strftime('%Y%m%d')  # Преобразуем дату в формат YYYYMMDD
     response = requests.get(f"{BASE_URL}?date={formatted_date}&json")  # Отправляем GET-запрос к API
     if response.status_code == 200:  # Если запрос успешен
@@ -23,11 +18,7 @@ def get_exchange_rate(date):
 
 # Функция для получения курсов валют за последние 7 дней
 def get_last_week_rates():
-    """
-    Получить курсы валют за последние 7 дней.
-
-    :return: словарь с датами и курсами валют
-    """
+    
     today = datetime.now()  # Текущая дата
     last_week = [today - timedelta(days=i) for i in range(7)]  # Список дат за последние 7 дней
     rates = {}  # Словарь для хранения курсов валют
@@ -39,12 +30,7 @@ def get_last_week_rates():
 
 # Функция для построения графика изменения курса валют
 def plot_currency_change(rates, currency_code="USD"):
-    """
-    Построить график изменения курса валюты.
-
-    :param rates: словарь с датами и курсами валют
-    :param currency_code: код валюты, для которой строится график (по умолчанию USD)
-    """
+   
     dates = []  # Список для хранения дат
     currency_rates = []  # Список для хранения значений курса валюты
 
